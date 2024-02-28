@@ -1,0 +1,183 @@
+// This scss reverse engineered bootstrap grid system
+// along with adding custom class for spacing
+
+@mixin flexStyle {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+@mixin generateFlexboxClass {
+	$flexDirection: (row, column, row-reverse, column-reverse);
+	$flexOrient: horizontal;
+	$flexDirectionWebkit: normal;
+
+	@each $value in $flexDirection {
+		@if ($value == column or $value == column-reverse) {
+			$flexOrient: vertical;
+		}
+
+		@if ($value == row-reverse or $value == column-reverse) {
+			$flexDirectionWebkit: reverse;
+		}
+
+		.flex-#{ $value } {
+			@include flexStyle;
+			-webkit-box-orient: $flexOrient;
+			-webkit-box-direction: $flexDirectionWebkit;
+			-ms-flex-direction: $flexDirection;
+			flex-direction: $flexDirection;
+		}
+	}
+}
+
+@mixin flexColumnSizing($percentage, $maxWidth) {
+	position: relative;
+	box-sizing: border-box;
+	width: 100%;
+	min-height: 1px;
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 $percentage;
+	flex: 0 0 $percentage;
+	max-width: $maxWidth;
+}
+
+@mixin flexColumnOrder($i) {
+	-webkit-box-ordinal-group: $i + 1;
+	-ms-flex-order: $i;
+	order: $i;
+}
+
+@mixin flexColumnOffset($percentage) {
+	margin-left: $percentage;
+}
+
+@mixin generateBreakpointClasses($maxColumn: $columnCount, $breakpointCode: '', $classType: 'col') {
+	$classPrefix: '';
+
+	@if ($breakpointCode != '') {
+		$classPrefix: $class__separator + $breakpointCode;
+	}
+
+	$layoutingClass: $classType + $classPrefix;
+
+	// generate default class first
+	@if ($classType == 'col') {
+		.#{ $layoutingClass } {
+			-ms-flex-preferred-size: 0;
+			flex-basis: 0;
+			-webkit-box-flex: 1;
+			-ms-flex-positive: 1;
+			flex-grow: 1;
+			max-width: 100%;
+		}
+	} @else if ($classType == 'order') {
+		.#{ $layoutingClass }-first {
+			-webkit-box-ordinal-group: 0;
+			-ms-flex-order: -1;
+			order: -1;
+		}
+
+		.#{ $layoutingClass }-last {
+			-webkit-box-ordinal-group: $maxColumn + 2;
+			-ms-flex-order: $maxColumn + 1;
+			order: $maxColumn + 1;
+		}
+	}
+
+	@for $i from 0 through $maxColumn {
+		$classSuffix: $i;
+		$percentage: 100%;
+		$maxWidth: none;
+
+		@if $i == 0 {
+			$classSuffix: 'auto';
+			$percentage: auto;
+			$maxWidth: none;
+		} @else {
+			$percentage: calc(100% * ($i / $maxColumn));
+			$maxWidth: $percentage;
+		}
+
+		@if ($classType == 'col') {
+			.#{ $layoutingClass + $class__separator + $classSuffix } {
+				@include flexColumnSizing($percentage, $maxWidth);
+			}
+		}
+		// @else if ($classType == 'order') {
+		// 	.#{ $layoutingClass + $class__separator + $i } {
+		// 		@include flexColumnOrder($i);
+		// 	}
+		// }
+		@else if ($classType == 'offset') {
+			// TODO: offset 0 mestinya 0 dan offset maxcol gaperlu
+			.#{ $layoutingClass + $class__separator + $i } {
+				@include flexColumnOffset($percentage);
+			}
+		}
+	}
+}
+
+@mixin generateFlexboxSpacingClass($breakpointCode: '') {
+	$spacingClassPrefix: 'flex-spacing';
+
+	@if ($breakpointCode != '') {
+		$spacingClassPrefix: 'spacing' + $class__separator + $breakpointCode;
+	}
+
+	@each $spacer, $value in $spacers {
+		.#{ $spacingClassPrefix + $class__separator + $spacer } {
+			margin: calc(-1 * ($value / 2)) + px;
+
+			& > .col,
+			& > [class*='col-'] {
+				padding: calc($value / 2) + px;
+			}
+		}
+	}
+}
+
+@include generateFlexboxClass;
+
+@include generateBreakpointClasses($classType: 'col');
+@include generateBreakpointClasses($classType: 'order');
+@include generateBreakpointClasses($classType: 'offset');
+@include generateFlexboxSpacingClass();
+
+@include smOnly {
+	@include generateBreakpointClasses($breakpointCode: 'sm', $classType: 'col');
+	@include generateBreakpointClasses($breakpointCode: 'sm', $classType: 'order');
+	@include generateBreakpointClasses($breakpointCode: 'sm', $classType: 'offset');
+	@include generateFlexboxSpacingClass($breakpointCode: 'sm');
+}
+@include mdOnly {
+	@include generateBreakpointClasses($breakpointCode: 'md', $classType: 'col');
+	@include generateBreakpointClasses($breakpointCode: 'md', $classType: 'order');
+	@include generateBreakpointClasses($breakpointCode: 'md', $classType: 'offset');
+	@include generateFlexboxSpacingClass($breakpointCode: 'md');
+}
+@include lgOnly {
+	@include generateBreakpointClasses($breakpointCode: 'lg', $classType: 'col');
+	@include generateBreakpointClasses($breakpointCode: 'lg', $classType: 'order');
+	@include generateBreakpointClasses($breakpointCode: 'lg', $classType: 'offset');
+	@include generateFlexboxSpacingClass($breakpointCode: 'lg');
+}
+
+// used for debugging flexbox
+.flex__item {
+	background-color: grey;
+	color: white;
+	height: 4.8rem;
+}
+
+.flex-nowrap {
+	-ms-flex-wrap: nowrap;
+	flex-wrap: nowrap;
+}
+
+.flex-wrap-reverse {
+	-ms-flex-wrap: wrap-reverse;
+	flex-wrap: wrap-reverse;
+}

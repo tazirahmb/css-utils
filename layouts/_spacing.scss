@@ -1,0 +1,80 @@
+// main code (without responsive) credit: https://github.com/harunalrashyid
+
+@mixin makeSpacer($class, $spacer, $value, $property, $secondProperty) {
+	$spacer__class: $class + $class__separator + $spacer;
+	$spacer__offset: $value;
+
+	@if $spacer != auto {
+		$spacer__offset: ($value * $spacer__factor) + #{$spacer__unit};
+	}
+
+	@if $spacer == 0 or $spacer == auto {
+		$spacer__offset: $value;
+	}
+
+	.#{ $spacer__class } {
+		@if $secondProperty {
+			#{ $property }: $spacer__offset;
+			#{ $secondProperty }: $spacer__offset;
+		} @else {
+			#{ $property }: $spacer__offset;
+		}
+	}
+}
+
+@mixin getSpacer($class, $property, $secondProperty: false) {
+	@each $spacer, $value in $spacers {
+		@include makeSpacer($class, $spacer, $value, $property, $secondProperty);
+	}
+}
+
+@mixin generateSpacingClass($device: '') {
+	$separator: $device;
+
+	@if ($device != '') {
+		$separator: $class__separator + $device;
+	}
+
+	@include getSpacer(m + $separator, margin);
+	@include getSpacer(mr + $separator, margin-right);
+	@include getSpacer(ml + $separator, margin-left);
+	@include getSpacer(mt + $separator, margin-top);
+	@include getSpacer(mb + $separator, margin-bottom);
+
+	@include getSpacer(p + $separator, padding);
+	@include getSpacer(pr + $separator, padding-right);
+	@include getSpacer(pl + $separator, padding-left);
+	@include getSpacer(pt + $separator, padding-top);
+	@include getSpacer(pb + $separator, padding-bottom);
+
+	@include getSpacer(my + $separator, margin-top, margin-bottom);
+	@include getSpacer(mx + $separator, margin-left, margin-right);
+
+	@include getSpacer(py + $separator, padding-top, padding-bottom);
+	@include getSpacer(px + $separator, padding-left, padding-right);
+
+	@include getSpacer(g + $separator, gap);
+	@include getSpacer(gx + $separator, column-gap);
+	@include getSpacer(gy + $separator, row-gap);
+}
+
+@include generateSpacingClass();
+
+@include smOnly {
+	@include generateSpacingClass($device: 'sm');
+}
+@include mdOnly {
+	@include generateSpacingClass($device: 'md');
+}
+@include lgOnly {
+	@include generateSpacingClass($device: 'lg');
+}
+
+/**
+ * breakpoint example
+ * using keyword argument, otherwise will read as secondProperty!
+ */
+
+// @include getSpacer(mr-sm, margin-right, $breakpoint: '481px');
+// @include getSpacer(mr-md, margin-right, $breakpoint: '769px');
+// @include getSpacer(mr-lg, margin-right, $breakpoint: '992px');

@@ -1,0 +1,54 @@
+@use 'sass:math';
+
+// breakpoint -- 16px
+// $mobileBreakpoint: 0;
+$smBreakpoint: 40em;
+$mdBreakpoint: 80em;
+$lgBreakpoint: 90em;
+
+$devices: ('xs', 'sm', 'md', 'lg');
+$class__separator: '-';
+$columnCount: 12;
+
+$spacer__factor: 1;
+$spacer__unit: 'px';
+
+$defaultSpacing: 8;
+
+$spacers: (
+	auto: auto,
+	0: 0,
+	'half': math.div($defaultSpacing, 2),
+	1: $defaultSpacing,
+	2: $defaultSpacing * 2,
+	3: $defaultSpacing * 3,
+	4: $defaultSpacing * 4,
+	5: $defaultSpacing * 5,
+	6: $defaultSpacing * 6,
+	7: $defaultSpacing * 7,
+	8: $defaultSpacing * 8,
+);
+
+// @mixin mobileOnly {
+// 	@media screen and (min-width: $mobileBreakpoint) {
+// 		@content;
+// 	}
+// }
+
+@mixin smOnly {
+	@media screen and (min-width: $smBreakpoint) {
+		@content;
+	}
+}
+
+@mixin mdOnly {
+	@media screen and (min-width: $mdBreakpoint) {
+		@content;
+	}
+}
+
+@mixin lgOnly {
+	@media screen and (min-width: $lgBreakpoint) {
+		@content;
+	}
+}

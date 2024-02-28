@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,800;0,900;1,200;1,400;1,500;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800;1,900&family=Zilla+Slab:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+* {
+	font-family: $bodyFont;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: $fontColor;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li,
+label,
+span {
+	font-weight: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: 1.15;
+	font-size: 1.6rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-weight: bold;
+	color: $headingColor;
+
+	&:not([class])::before {
+		color: $headingHighlightColor;
+		font-weight: 200;
+		font-style: italic;
+		position: absolute;
+		transform-origin: right bottom;
+	}
+}
+
+// mobile size
+h1 {
+	font-size: 3.2rem;
+}
+
+h2 {
+	font-size: 2.2rem;
+}
+
+h3 {
+	font-size: 2rem;
+}
+
+h4 {
+	font-size: 1.6rem;
+}
+
+h5 {
+	font-size: 1.4rem;
+}
+
+h6 {
+	font-size: 1rem;
+}
+
+p,
+li,
+label {
+	font-size: 1.4rem;
+}
+
+p {
+	margin-bottom: 1.6rem;
+	line-height: 1.67;
+}
+
+.caption {
+	font-size: 1.2rem;
+}
+
+.text-size-2xl {
+	font-size: 2.4rem;
+}
+.text-size-xl {
+	font-size: 2.2rem;
+}
+
+.text-size-lg {
+	font-size: 2rem;
+}
+.text-size-md {
+	font-size: 1.6rem;
+}
+.text-size-sm {
+	font-size: 1.4rem;
+}
+.text-size-xs {
+	font-size: 1.2rem;
+}
+
+@include mdOnly() {
+	h1 {
+		font-size: 6rem;
+		&:not([class])::before {
+			content: '#';
+			left: -5.2rem;
+		}
+	}
+	h2 {
+		font-size: 4.8rem;
+		&:not([class])::before {
+			content: '##';
+			left: -7.8rem;
+		}
+	}
+	h3 {
+		font-size: 3.6rem;
+		&:not([class])::before {
+			content: '###';
+			left: -8.8rem;
+		}
+	}
+	h4 {
+		font-size: 3.2rem;
+		&:not([class])::before {
+			content: '####';
+			left: -10.4rem;
+		}
+	}
+	h5 {
+		font-size: 2.4rem;
+	}
+	h6 {
+		font-size: 2rem;
+	}
+
+	p,
+	li,
+	label {
+		font-size: 1.8rem;
+	}
+
+	// custom sizing
+
+	.text-size-2xl {
+		font-size: 6rem;
+	}
+	.text-size-xl {
+		font-size: 4.8rem;
+	}
+
+	.text-size-lg {
+		font-size: 3.6rem;
+	}
+	.text-size-md {
+		font-size: 3.2rem;
+	}
+	.text-size-sm {
+		font-size: 2.4rem;
+	}
+	.text-size-xs {
+		font-size: 1.6rem;
+	}
+}
+
+.text-display {
+	font-family: $displayFont;
+	color: $headingColor;
+	font-weight: bold;
+}
+
+a {
+	color: $linkColor;
+	font-weight: bold;
+	font-size: inherit;
+	text-decoration: none;
+	border-bottom: 1px solid $linkColor;
+
+	&:hover {
+		background-color: $linkHighlightHover;
+		color: $linkTextHover;
+		border-bottom: 4px solid $linkTextHover;
+		transition: 0.25s;
+	}
+
+	&.link-reset,
+	&.link-reset:hover {
+		border: none;
+		color: inherit;
+	}
+
+	&.btn {
+		display: inline-block;
+		text-align: center;
+		padding: 0.8rem 1.6rem;
+	}
+}
+
+blockquote {
+	padding: 16px;
+	border-left: 4px solid $highlightText;
+
+	p {
+		font-family: $quoteFont;
+		font-size: 2.4rem;
+		font-style: italic;
+		line-height: normal;
+		margin: 0;
+	}
+}
+
+ul {
+	list-style: square;
+}
+
+ol,
+ul,
+dl {
+	margin-bottom: 24px;
+
+	li,
+	dt,
+	dd {
+		margin-left: 32px;
+		margin-bottom: 8px;
+	}
+}
+
+code {
+	background-color: $highlightBoxBackground;
+	padding: 2px 4px;
+	border-radius: 4px;
+	border: none;
+}
+
+pre {
+	background: $highlightBoxBackground !important;
+	margin: 1.6rem 4rem;
+	overflow-y: hidden;
+	overflow-x: auto;
+
+	::before,
+	::after {
+		content: none;
+	}
+
+	code {
+		padding: 0;
+		border: none;
+	}
+}
+
+mark {
+	background-color: $highlightText;
+}
+
+// custom alignment
+.text-left {
+	text-align: left;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-justify {
+	text-align: justify;
+}
+
+// custom style
+.text-nowrap {
+	white-space: nowrap;
+}
+
+.text-truncate {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

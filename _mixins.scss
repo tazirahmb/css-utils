@@ -1,0 +1,15 @@
+@mixin custom-border($width: 120px, $color: $shadeBorder, $size: 4px, $position: top) {
+	content: ''; /* This is necessary for the pseudo element to work. */
+	display: block; /* This will put the pseudo element on its own line. */
+	width: $width; /* Change this to whatever width you want. */
+
+	@if $position == top {
+		border-top: $size
+			solid
+			$color; /* This creates the border. Replace black with whatever color you want. */
+	} @else if $position == bottom {
+		border-bottom: $size
+			solid
+			$color; /* This creates the border. Replace black with whatever color you want. */
+	}
+}

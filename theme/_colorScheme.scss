@@ -1,0 +1,78 @@
+// --- code light start ---
+$background: $white;
+
+$titleBackground: $primaryDark;
+$titleColor: $white;
+
+$headingColor: $primaryDark;
+$headingHighlightColor: $primaryLight;
+$fontColor: $neutralColorDarker;
+$captionColor: $neutralColorDark;
+
+$selectionColor: $primaryLight;
+
+$linkColor: $primary;
+$linkHighlightHover: $accentColor;
+$linkTextHover: $primaryDark;
+
+$highlightText: $accentColor;
+
+$primaryNavigationActive: $primary;
+$primaryNavigationTextActive: $white;
+$primaryNavigationHover: $primaryLight;
+$primaryNavigationTextHover: $primary;
+
+$lightNavigation: $primaryLight; // for header link
+$lightNavigationHover: $primaryLight; // for header link
+
+$navigationCurrentBackgroundMobile: $primaryDark; // for header link
+$navigationCurrentTextMobile: $white; // for header link
+
+$highlightBoxBackground: $neutralColorLighter;
+
+$shadeBorder: $primaryLight;
+
+$footerBackground: $primaryDark;
+$footerText: $white;
+
+// --- code light end ---
+
+// --- code dark start ---
+
+// $background: $primaryDark;
+
+// $titleBackground: $neutralColorLighter;
+// $titleColor: $neutralColorDarker;
+
+// $headingColor: $neutralColorLighter;
+// $headingHighlightColor: $neutralColorDark; // the # things
+// $fontColor: $white;
+// $captionColor: $neutralColorLight;
+
+// $selectionColor: $primary;
+
+// $linkColor: $primaryLight;
+// $linkHighlightHover: $accentColor;
+// $linkTextHover: $primaryDark;
+
+// $highlightText: $accentColor;
+
+// $primaryNavigationActive: $primary;
+// $primaryNavigationTextActive: $white;
+// $primaryNavigationHover: $primaryDark;
+// $primaryNavigationTextHover: $primaryLight;
+
+// $lightNavigation: $primary; // for prevnext
+// $lightNavigationHover: $primary; // for prevnext
+
+// $navigationCurrentBackgroundMobile: $primaryLight; // for header link
+// $navigationCurrentTextMobile: $primaryDark; // for header link
+
+// $highlightBoxBackground: rgba($neutralColor, 0.25);
+
+// $shadeBorder: $accentColor;
+
+// $footerBackground: $primary;
+// $footerText: $white;
+
+// --- code dark end ---

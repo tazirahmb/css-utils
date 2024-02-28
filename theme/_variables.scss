@@ -1,0 +1,25 @@
+// Colors
+// == primary
+$primaryDark: #1b3e4d;
+$primary: #3a91b7;
+$primaryLight: #d8f3ff;
+
+$accentColor: #85ffb8;
+
+// == neutral
+$white: #fff;
+$neutralColorLighter: #fafafa;
+$neutralColorLight: #e0e0e6;
+$neutralColor: #c1c2c5;
+$neutralColorDark: #9899aa;
+$neutralColorDarker: #2c3e50;
+$black: #000;
+
+// Font
+$displayFont: 'Playfair Display', serif;
+$bodyFont: 'Montserrat', sans-serif;
+$quoteFont: 'Zilla Slab', cursive;
+
+$regularFontSize: 62.5%; // 100% -> 16px | 62.5% => 10px
+
+@import './colorScheme';
