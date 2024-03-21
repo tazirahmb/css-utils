@@ -1,6 +1,6 @@
 {
   "name": "minimal-css-utilities",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Minimal css utilities for layouting and normalise",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tazirahmb/css-utils.git"
+    "url": "git+https://github.com/tazirahmb/css-utils.git",
+    "changelog": "auto-changelog -p && git add CHANGELOG.md && git commit --amend"
   },
   "keywords": [
     "atomic-css",
