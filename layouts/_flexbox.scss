@@ -27,8 +27,8 @@
 			@include flexStyle;
 			-webkit-box-orient: $flexOrient;
 			-webkit-box-direction: $flexDirectionWebkit;
-			-ms-flex-direction: $flexDirection;
-			flex-direction: $flexDirection;
+			-ms-flex-direction: $value;
+			flex-direction: $value;
 		}
 	}
 }
