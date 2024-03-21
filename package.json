@@ -1,0 +1,23 @@
+{
+  "name": "minimal-css-utilities",
+  "version": "1.0.0",
+  "description": "Minimal css utilities for layouting and normalise",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tazirahmb/css-utils.git"
+  },
+  "keywords": [
+    "atomic-css",
+    "css-utilities"
+  ],
+  "author": "tazirahmb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tazirahmb/css-utils/issues"
+  },
+  "homepage": "https://github.com/tazirahmb/css-utils#readme"
+}
